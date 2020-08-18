@@ -37,17 +37,3 @@ mouth_library = {
     "s": ["ch", "d", "g", "hh", "jh", "k", "ng",
           "r", "s", "sh", "t", "y", "z", "zh"],
 }
-
-# Library for converting transcribed digits to their word form
-number_library = {
-    "0": "zero ",
-    "1": "one ",
-    "2": "two ",
-    "3": "three ",
-    "4": "four ",
-    "5": "five ",
-    "6": "six ",
-    "7": "seven ",
-    "8": "eight ",
-    "9": "nine ",
-}

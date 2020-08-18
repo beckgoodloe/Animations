@@ -36,8 +36,6 @@ def transcribe(filename):
     except Exception as e:
         return "ERROR: COULD NOT TRANSCRIBE"
     # return r.recognize_sphinx(data)
-    # print("You said: " + r.recognize_sphinx(data))
-    # print("You said: " + r.recognize_google(data))
 
     force_align(transcript)
 
@@ -142,7 +140,6 @@ def re_record():
         clear_input_queue()
         sys.exit(0)
     else:
-        # print("Invalid input")
         re_record()
 
 
@@ -151,18 +148,6 @@ def keep_recording():
     response = input("Do you want to keep the recording? (y/n)")
     if(response == "y" or response == "Y"):
         main(True)
-        # try:
-        #     transcribe(recording_name)
-        #     Go back into main for processing step
-        #     main(True)
-        # except Exception as e:
-        #     print("Unable to transcribe.")
-        #     print(e)
-        #     re_record()
-        # global recording_finished
-        # recording_finished = True
-        # sys.exit(0)
-        # main()
     elif(response == "n" or response == "N"):
         re_record()
     else:
@@ -171,11 +156,6 @@ def keep_recording():
 
 
 def on_press(key):
-    # try:
-    #     print('alphanumeric key {0} pressed'.format(key.char))
-    # except AttributeError:
-    #     print('special key {0} pressed'.format(key))
-
     global currently_recording
 
     # Check if this key press is to start or end the recording
@@ -190,11 +170,6 @@ def on_press(key):
 
 
 def on_release(key):
-    # print('{0} released'.format(
-    #     key))
-    # if key == keyboard.Key.esc:
-    #     # Stop listener
-    #     return False
     pass
 
 
