@@ -201,13 +201,13 @@ def setup_layout():
 
     # Create transcribe button
     transcribe_button = tk.Button(root,
-                                text="Transcribe queued text",
-                                padx=BUTTON_PAD_X, pady=BUTTON_PAD_Y,
-                                height=BUTTON_HEIGHT,
-                                fg='black', bg='black',
-                                command=scribe)
+                                  text="Transcribe queued text",
+                                  padx=BUTTON_PAD_X, pady=BUTTON_PAD_Y,
+                                  height=BUTTON_HEIGHT,
+                                  fg='black', bg='black',
+                                  command=scribe)
     transcribe_button.place(x=ANCHOR_X, y=ANCHOR_Y + 5 *
-                          (BUTTON_HEIGHT + VERTICAL_SPACING))
+                            (BUTTON_HEIGHT + VERTICAL_SPACING))
 
 
 def main():
