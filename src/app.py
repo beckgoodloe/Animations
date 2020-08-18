@@ -23,7 +23,7 @@ HORIZONTAL_SPACING = 160
 
 # Create root
 root = tk.Tk()
-root.title("Let's Animate!")
+root.title("Animate!")
 
 # Updateable variables
 which_audio = IntVar()
