@@ -1,10 +1,12 @@
 import wave
 import pyaudio
+import re
 import sys
 import speech_recognition as sr
 import requests
 import json
 import gentle
+import inflect
 
 from pydub import AudioSegment
 from pynput import keyboard
@@ -32,12 +34,11 @@ def transcribe(filename):
     # Choose output method
     try:
         script = r.recognize_google(data)
-        return script
+        # return r.recognize_sphinx(data)
     except Exception as e:
         return "ERROR: COULD NOT TRANSCRIBE"
-    # return r.recognize_sphinx(data)
-
-    force_align(transcript)
+    script = convert_numbers(script)
+    return script
 
 
 def playback(filename):
@@ -270,10 +271,27 @@ def exit_program():
     sys.exit(1)
 
 
+def hasNumbers(inputString):
+    return any(char.isdigit() for char in inputString)
+
+
 def convert_numbers(transcript):
-    for key, value in number_library.items():
-        transcript = transcript.replace(key, value)
-    return transcript
+    print(f"Transcript is {transcript}")
+    # Using inflect engine to NUM_TO_WORD
+    engine = inflect.engine()
+    # Split text and iterate, sorting by words that are all nums v partial nums
+    split_text = transcript.split(" ")
+    for i, word in enumerate(split_text):
+        if (hasNumbers(word)):
+            if(word.isdecimal()):
+                split_text[i] = engine.number_to_words(split_text[i])
+            else:
+                res = list(re.findall(r'(\w+?)(\d+)', word)[0])
+                for j, item in enumerate(res):
+                    if(item.isdecimal()):
+                        res[j] = engine.number_to_words(res[j])
+                split_text[i] = " ".join(res)
+    return " ".join(split_text)
 
 
 def main(processing=False):
@@ -313,4 +331,4 @@ def main(processing=False):
 
 
 if __name__ == '__main__':
-    main(True)
+    main()

@@ -122,8 +122,8 @@ def play():
     # Check if audio is valid
     if(path.startswith("NOTHING")):
         messagebox.showerror("Error", "There is no audio currently queued.")
-    elif(not (path.endswith(".wav") or path.endswith(".mp3"))):
-        messagebox.showerror("Error", "File must be and MP3 or WAV format.")
+    elif(not (path.endswith(".wav"))):
+        messagebox.showerror("Error", "File must be WAV format.")
     else:
         playback(path)
 
